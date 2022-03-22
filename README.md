@@ -9,7 +9,7 @@
 ## Features
 - Writes current playing song to a text file (for use in OBS).
 - Customize output for track info.
-- Optionaly write longer track names to separate file. Useful for applying text scolling to just long track names.
+- Optionally write longer track names to separate file. Useful for applying text scolling to just long track names.
 
 ## Setup
 1. Download [TidalNowPlaying.zip](https://github.com/stubbs28/TIDAL-Now-Playing/releases).
