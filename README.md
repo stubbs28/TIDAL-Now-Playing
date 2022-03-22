@@ -9,7 +9,7 @@
 * [Usage] (#usage)
 
 ## General Information
-[![How to use Tidal Now Playing in OBS](https://img.youtube.com/vi/9_GlLl43-Aw/0.jpg)](https://www.youtube.com/watch?v=9_GlLl43-Aw)
+[![How to use Tidal Now Playing in OBS](https://img.youtube.com/vi/9_GlLl43-Aw/0.jpg)](https://www.youtube.com/watch?v=9_GlLl43-Aw "How to use Tidal Now Playing in OBS")
 
 ## Features
 - Writes current playing song to a text file (for use in OBS).
