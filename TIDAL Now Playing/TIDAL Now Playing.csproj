@@ -12,6 +12,12 @@
     <Description>A simple tool for grabbing the currently playing song from TIDAL. Currently played tracks are written to text files allow users to display their music titles in their streams.</Description>
     <PackageProjectUrl></PackageProjectUrl>
     <Copyright>Copyright </Copyright>
+    <AssemblyVersion>2.0.0</AssemblyVersion>
+    <FileVersion>2.0.0</FileVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <Optimize>True</Optimize>
   </PropertyGroup>
 
   <ItemGroup>
