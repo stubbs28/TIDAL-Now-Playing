@@ -5,6 +5,7 @@ using System.Linq;
 using System.Management;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.Json;
 
 namespace TIDAL_Now_Playing
 {
@@ -12,11 +13,40 @@ namespace TIDAL_Now_Playing
     {
         public static readonly string SONG = "$track";
         private static readonly string PROCESS = "TIDAL";
-        public string NowPlaying(string format) {
-            if (!format.Contains(SONG))
+        private static readonly string EMPTY = "{empty}";
+
+        public Settings settings { get; set; }
+
+        private string _nowPlaying;
+        public string nowPlaying { 
+            get 
             {
-                return format;
+                return _nowPlaying == "" ? EMPTY : _nowPlaying;
+            } 
+        }
+        public string shortTrack { 
+            get
+            {
+                return _nowPlaying.Length <= settings.textWidth ? nowPlaying : EMPTY;
+            } 
+        }
+        public string longTrack
+        {
+            get
+            {
+                return _nowPlaying.Length > settings.textWidth ? nowPlaying : EMPTY;
             }
+        }
+
+        public TidalTitle()
+        {
+            _nowPlaying = "";
+            settings = new();
+        }
+
+        public bool Update()
+        {
+            string newTrack = "";
             foreach (Process p in Process.GetProcessesByName(PROCESS))
             {
                 try
@@ -26,13 +56,31 @@ namespace TIDAL_Now_Playing
                         string song = p.MainWindowTitle.ToString();
                         if (song != PROCESS)
                         {
-                            return format.Replace(SONG, song);
+                            newTrack = settings.format.Replace(SONG, song);
+                            break;
                         }
                     }
                 }
                 catch { }
             }
-            return "";
+            bool updated = _nowPlaying != newTrack;
+            _nowPlaying = newTrack;
+            return updated;
+        }
+
+        public void Load(string path)
+        {
+            if (File.Exists(path))
+            {
+                string js = File.ReadAllText(path);
+                settings = JsonSerializer.Deserialize<Settings>(js)!;
+            }
+        }
+
+        public void Save(string path)
+        {
+            string js = JsonSerializer.Serialize(settings);
+            File.WriteAllText(path, js);
         }
     }
 }
