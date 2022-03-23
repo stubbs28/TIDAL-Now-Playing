@@ -9,6 +9,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <StartupObject>TIDAL_Now_Playing.Program</StartupObject>
     <ApplicationIcon>tidal_now_playing.ico</ApplicationIcon>
+    <Description>A simple tool for grabbing the currently playing song from TIDAL. Currently played tracks are written to text files allow users to display their music titles in their streams.</Description>
+    <PackageProjectUrl></PackageProjectUrl>
+    <Copyright>Copyright </Copyright>
   </PropertyGroup>
 
   <ItemGroup>
