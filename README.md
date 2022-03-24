@@ -2,9 +2,9 @@
 > Grabs the current playing song in TIDAL and writes it to a text file. Useful for displaying currently playing songs in OBS.
 
 ## Table of Contents
-* [Features] (#features)
-* [Setup] (#setup)
-* [Usage] (#usage)
+* [Features](#features)
+* [Setup](#setup)
+* [Usage](#usage)
 
 ## Features
 - Writes current playing song to a text file (for use in OBS).
