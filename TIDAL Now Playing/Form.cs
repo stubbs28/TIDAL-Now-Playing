@@ -7,6 +7,8 @@ namespace TIDAL_Now_Playing
         public static readonly string OUTPUT = "NowPlaying.txt";
         public static readonly string LONG_OUTPUT = "LongTrack.txt";
         public static readonly string SHORT_OUTPUT = "ShortTrack.txt";
+        private static readonly string EMPTY = "{empty}";
+
         public bool running { get; set; }
         private string workingDirectory { get; set; }
 
@@ -90,9 +92,8 @@ namespace TIDAL_Now_Playing
             using (FileStream fs = File.Create(fullpath))
             {
                 fs.Write(new System.Text.UTF8Encoding(true).GetBytes(output));
-                
             }
-            tb.Text = output;
+            tb.Text = output == "" ? EMPTY : output;
         }
 
         private void restoreDefaultsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -108,7 +109,7 @@ namespace TIDAL_Now_Playing
             window.Show();
         }
 
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        private void Form_FormClosing(object sender, FormClosingEventArgs e)
         {
             tidalTitle.Save(SETTINGS);
         }

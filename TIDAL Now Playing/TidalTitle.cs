@@ -13,7 +13,6 @@ namespace TIDAL_Now_Playing
     {
         public static readonly string SONG = "$track";
         private static readonly string PROCESS = "TIDAL";
-        private static readonly string EMPTY = "{empty}";
 
         public Settings settings { get; set; }
 
@@ -21,20 +20,20 @@ namespace TIDAL_Now_Playing
         public string nowPlaying { 
             get 
             {
-                return _nowPlaying == "" ? EMPTY : _nowPlaying;
+                return _nowPlaying;
             } 
         }
         public string shortTrack { 
             get
             {
-                return _nowPlaying.Length <= settings.textWidth ? nowPlaying : EMPTY;
+                return _nowPlaying.Length <= settings.textWidth ? nowPlaying : "";
             } 
         }
         public string longTrack
         {
             get
             {
-                return _nowPlaying.Length > settings.textWidth ? nowPlaying : EMPTY;
+                return _nowPlaying.Length > settings.textWidth ? nowPlaying : "";
             }
         }
 
